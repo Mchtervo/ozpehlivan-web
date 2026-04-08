@@ -114,16 +114,16 @@ export function ProjectGallery({ images, title }: Props) {
 
           {/* Image area with swipe support */}
           <div
-            className="relative flex w-full flex-1 items-center justify-center px-14 sm:px-20"
-            onClick={(e) => e.stopPropagation()}
+            className="relative flex w-full flex-1 items-center justify-center"
             onTouchStart={onTouchStart}
             onTouchEnd={onTouchEnd}
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Prev button */}
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); prev(); }}
-              className="absolute left-2 sm:left-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white/25 active:scale-95 touch-manipulation"
+              className="absolute left-2 z-10 sm:left-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white/25 active:scale-95 touch-manipulation"
               aria-label="Önceki"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden>
@@ -131,21 +131,22 @@ export function ProjectGallery({ images, title }: Props) {
               </svg>
             </button>
 
-            <Image
-              key={idx}
-              src={images[idx]}
-              alt={`${title} ${idx + 1}`}
-              width={900}
-              height={1200}
-              className="max-h-[75vh] w-auto max-w-full rounded-xl object-contain shadow-2xl"
-              priority
-            />
+            {/* Image wrapper — explicit constraints for mobile */}
+            <div className="mx-14 sm:mx-20 flex items-center justify-center" style={{ maxHeight: "72vh", maxWidth: "calc(100vw - 112px)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                key={idx}
+                src={images[idx]}
+                alt={`${title} ${idx + 1}`}
+                style={{ maxHeight: "72vh", maxWidth: "100%", objectFit: "contain", borderRadius: "12px", boxShadow: "0 25px 50px -12px rgba(0,0,0,0.9)" }}
+              />
+            </div>
 
             {/* Next button */}
             <button
               type="button"
               onClick={(e) => { e.stopPropagation(); next(); }}
-              className="absolute right-2 sm:right-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white/25 active:scale-95 touch-manipulation"
+              className="absolute right-2 z-10 sm:right-4 flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition hover:bg-white/25 active:scale-95 touch-manipulation"
               aria-label="Sonraki"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden>
@@ -169,12 +170,13 @@ export function ProjectGallery({ images, title }: Props) {
                   key={src}
                   type="button"
                   onClick={(e) => { e.stopPropagation(); setIdx(i); }}
-                  className={`relative h-14 w-10 shrink-0 overflow-hidden rounded-md transition-all touch-manipulation ${
+                  className={`h-14 w-10 shrink-0 overflow-hidden rounded-md transition-all touch-manipulation ${
                     i === idx ? "ring-2 ring-bronze opacity-100 scale-110" : "opacity-35 hover:opacity-60"
                   }`}
                   aria-label={`Görsel ${i + 1}`}
                 >
-                  <Image src={src} alt="" fill className="object-cover" sizes="40px" />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </button>
               ))}
             </div>

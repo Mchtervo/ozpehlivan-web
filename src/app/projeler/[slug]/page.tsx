@@ -80,6 +80,30 @@ export default async function ProjectDetailPage({ params }: Props) {
         </div>
       </div>
 
+      {/* ── Galeri ── */}
+      {project.gallery && project.gallery.length > 0 && (
+        <section className="noise-overlay relative overflow-hidden bg-[#0d0d0b] py-16 sm:py-20">
+          <div className="pointer-events-none absolute -top-32 right-0 h-96 w-96 rounded-full bg-bronze/5 blur-[100px]" aria-hidden />
+          <Section>
+            <div className="reveal-on-scroll mb-8 flex items-end justify-between gap-4">
+              <div>
+                <p className="label-tag text-bronze/70">Galeri</p>
+                <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl">
+                  Proje{" "}
+                  <span className="text-gradient-bronze">fotoğrafları</span>
+                </h2>
+              </div>
+              <span className="text-4xl font-black tabular-nums text-gradient-bronze leading-none">
+                {String(project.gallery.length).padStart(2, "0")}
+              </span>
+            </div>
+            <div className="reveal-on-scroll">
+              <ProjectGallery images={project.gallery} title={project.title} />
+            </div>
+          </Section>
+        </section>
+      )}
+
       <Section className="py-20 sm:py-24">
         <div className="reveal-on-scroll grid gap-16 lg:grid-cols-[1fr_360px]">
           <div>
@@ -151,30 +175,6 @@ export default async function ProjectDetailPage({ params }: Props) {
           </ul>
         </div>
       </Section>
-
-      {/* ── Galeri ── */}
-      {project.gallery && project.gallery.length > 0 && (
-        <section className="noise-overlay relative overflow-hidden bg-[#0d0d0b] py-20 sm:py-28">
-          <div className="pointer-events-none absolute -top-32 right-0 h-96 w-96 rounded-full bg-bronze/5 blur-[100px]" aria-hidden />
-          <Section>
-            <div className="reveal-on-scroll mb-10 flex items-end justify-between gap-4">
-              <div>
-                <p className="label-tag text-bronze/70">Galeri</p>
-                <h2 className="mt-4 text-3xl font-black tracking-tight text-white sm:text-4xl">
-                  Proje{" "}
-                  <span className="text-gradient-bronze">fotoğrafları</span>
-                </h2>
-              </div>
-              <span className="text-4xl font-black tabular-nums text-gradient-bronze leading-none">
-                {String(project.gallery.length).padStart(2, "0")}
-              </span>
-            </div>
-            <div className="reveal-on-scroll">
-              <ProjectGallery images={project.gallery} title={project.title} />
-            </div>
-          </Section>
-        </section>
-      )}
 
       <ContactCta />
     </>
