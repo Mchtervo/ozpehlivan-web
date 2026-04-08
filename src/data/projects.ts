@@ -63,6 +63,9 @@ export const projects: Project[] = [
     status: "tamamlandı",
     coverImage: "/images/projects/bulvar-yenikent-mobile.png",
     heroImage: "/images/projects/bulvar-yenikent.png",
+    gallery: Array.from({ length: 24 }, (_, i) =>
+      `/images/projects/bulvar-gallery/${String(i + 1).padStart(2, "0")}.png`
+    ),
   },
   {
     slug: "yakut-has-bahceleri",
