@@ -113,6 +113,9 @@ export const projects: Project[] = [
     status: "satışta",
     coverImage: "/images/projects/prestijli-ticari-alan.png",
     heroImage: "/images/projects/prestijli-ticari-alan-hero.png",
+    gallery: Array.from({ length: 10 }, (_, i) =>
+      `/images/projects/prestijli-gallery/${String(i + 1).padStart(2, "0")}.png`
+    ),
   },
   {
     slug: "ayas-orman-evleri",
