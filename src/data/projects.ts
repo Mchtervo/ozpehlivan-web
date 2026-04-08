@@ -135,7 +135,7 @@ export const projects: Project[] = [
     status: "satışta",
     coverImage: "/images/projects/ayas-orman-evleri.png",
     heroImage: "/images/projects/ayas-orman-evleri-hero.png",
-    gallery: Array.from({ length: 13 }, (_, i) =>
+    gallery: Array.from({ length: 31 }, (_, i) =>
       `/images/projects/ayas-gallery/${String(i + 1).padStart(2, "0")}.png`
     ),
   },
