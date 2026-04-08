@@ -85,6 +85,9 @@ export const projects: Project[] = [
     status: "satışta",
     coverImage: "/images/projects/yakut-has-bahceleri-mobile.png",
     heroImage: "/images/projects/yakut-has-bahceleri.png",
+    gallery: Array.from({ length: 21 }, (_, i) =>
+      `/images/projects/yakut-gallery/${String(i + 1).padStart(2, "0")}.png`
+    ),
   },
   {
     slug: "prestijli-ticari-alan",
