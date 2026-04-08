@@ -38,6 +38,9 @@ export const projects: Project[] = [
     status: "tamamlandı",
     coverImage: "/images/projects/zirova-yasam-mobile.png",
     heroImage: "/images/projects/zirova-yasam.png",
+    gallery: Array.from({ length: 17 }, (_, i) =>
+      `/images/projects/zirova-gallery/${String(i + 1).padStart(2, "0")}.png`
+    ),
   },
   {
     slug: "bulvar-yenikent",
